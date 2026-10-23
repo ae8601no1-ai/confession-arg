@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: confession-arg
+    runtime: static
+    buildCommand: test -f dist/index.html
+    staticPublishPath: dist
+    autoDeploy: false
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: no-cache
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
